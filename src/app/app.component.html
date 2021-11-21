@@ -1,11 +1,9 @@
-<h2>Final front end - Branch</h2>
+<h2>Final front end</h2>
 <div class="actions">
   <button class="actionButton" (click)="tab='reportes'">Ver reportes</button>
   <button class="actionButton" (click)="tab='productos'">Ver productos</button>
-  <button class="actionButton" (click)="tab='sales'">Ventas</button>
-  <button class="actionButton" (click)="tab='clients'">Ver clientes</button>
+  <button class="actionButton">Ver clientes</button>
+  <button class="actionButton">Ver centas</button>
 </div>
 <reports-root *ngIf="tab==='reportes'"></reports-root>
-<products-root *ngIf="tab==='productos'"></products-root>
-<sales-root *ngIf="tab==='sales'"></sales-root>
-<clients-root *ngIf="tab==='clients'"></clients-root>
+<!--<products-root *ngIf="tab==='productos'"></products-root>-->

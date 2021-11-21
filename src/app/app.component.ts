@@ -7,5 +7,5 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "Front end 1";
-  public tab: string = "sales";
+  public tab: string = "reportes";
 }

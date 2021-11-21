@@ -1,44 +1,27 @@
-import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
-
 import { AppComponent } from "./app.component";
-import { ReportsComponent } from "./components/reports/reports.component";
+import { ReportsComponent } from "./components/reports/reports.components";
 
 import { MatTableModule } from "@angular/material/table";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatInputModule } from "@angular/material/input";
-import { ProductsComponent } from "./components/products/products.component";
-import { ClientsComponent } from "./components/clients/clients.component";
-import { SalesComponent } from "./components/sales/sales.component";
-import { TitledInputComponent } from "./components/titled-input/titled-input.component";
-
-import { CustomerService } from "./services/customers.service";
-import { ProductsService } from "./services/products.service";
-import { SalesService } from "./services/sales.service";
-import { ClientsService } from "./services/clients.service";
-
+//import { ProductsComponent } from "./components/products/products.component";
+import { HttpClientModule } from "@angular/common/http";
+// import { ProductosService } from "./services/productos.service";
+import { ReportService } from "./components/services/reports.service";
 @NgModule({
-  declarations: [
-    AppComponent,
-    ReportsComponent,
-    ProductsComponent,
-    SalesComponent,
-    ClientsComponent,
-    TitledInputComponent
-  ],
+  declarations: [AppComponent, ReportsComponent],
   imports: [
     BrowserModule,
     MatInputModule,
-    CommonModule,
     BrowserAnimationsModule,
     MatTableModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [SalesService, ProductsService, CustomerService, ClientsService],
+  providers: [ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
