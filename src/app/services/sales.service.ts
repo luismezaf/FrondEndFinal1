@@ -49,7 +49,10 @@ export class SalesService {
     });
   }
 
-  public async addSale(request: any): Promise<any[]> {
+  public async addSale(request: any): Promise<any> {
     return await this._http.post<any>(this.urlApi, request).toPromise();
+  }
+  public async addSaleDetail(request: any): Promise<any> {
+    return await this._http.post<any>(this.urlApiDetails, request).toPromise();
   }
 }

@@ -117,22 +117,23 @@
 <div class="column">
   <!-- SUMMARY -->
   <div class="row justify-between pa-sm mb-md items-center mx-sm">
-    <div class="text-body row items-center">
-      <strong>
-        {{sales.length}} {{sales.length === 1 ? 'venta' : 'ventas'}}
-      </strong>
+    <div class="text-body column">
+      <div class="text-caption text-primary">TOTAL</div>
+      <div><strong>{{total}} Gs.</strong></div>
     </div>
     <button
-      class="mx-sm bordered rounded pa-md bg-primary text-white"
+      class="mx-sm rounded pa-md bg-primary text-white"
       (click)="showAddSaleModal=true"
     >
       <strong>NUEVA VENTA</strong>
     </button>
-    <div class="column items-end">
-      <div class="text-caption px-sm text-primary">TOTAL</div>
-      <div><strong>{{total}} Gs.</strong></div>
-    </div>
   </div>
+</div>
+
+<div class="column mx-md px-xs mb-sm text-caption">
+  <strong>
+    {{sales.length}} {{sales.length === 1 ? 'venta' : 'ventas'}}
+  </strong>
 </div>
 
 <!-- 
@@ -190,9 +191,11 @@
       <div class="pa-sm">
         <div
           *ngFor="let product of sale.products"
-          class="pa-md row justify-between text-grey"
+          class="pa-md row justify-between text-grey items-center"
         >
-          <div><strong>{{product.nombre}}</strong></div>
+          <div class="text-caption" style="max-width: 100px;">
+            <strong>{{product.nombre}}</strong>
+          </div>
           <div class="row text-caption items-center">
             <div class="bordered pa-sm rounded">{{product.cantidad}}</div>
             <div class="px-md">x</div>

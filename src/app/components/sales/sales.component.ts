@@ -9,7 +9,7 @@ import { SalesService } from "src/app/services/sales.service";
   styleUrls: ["./sales.component.css"]
 })
 export class SalesComponent {
-  public showAddSaleModal: Boolean = true;
+  public showAddSaleModal: Boolean = false;
   public sales: Array<any> = [];
   public total: Number = 0;
   public search: String = "";
@@ -33,8 +33,31 @@ export class SalesComponent {
 
   updateSale() {}
 
-  addSale() {
+  async addSale() {
+    // Add sale
+    const current = new Date();
+    const newSale = await this._salesService.addSale({
+      idCliente: this.selectedCustomerId,
+      fecha: `${current.getFullYear()}/${
+        current.getMonth() + 1
+      }/${current.getDate()}`,
+      total: this.addedProducts.reduce(
+        (total, p) => total + p.cantidad * p.precio,
+        0
+      )
+    });
+    // Add details
+    for (let product of this.addedProducts) {
+      await this._salesService.addSaleDetail({
+        idVenta: newSale.id,
+        idProducto: product.id,
+        cantidad: product.cantidad
+      });
+    }
+
+    // Update page
     this.showAddSaleModal = false;
+    this.initialize();
   }
 
   addSelectedProduct() {
