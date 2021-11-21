@@ -19,8 +19,9 @@ export class SalesComponent {
   public selectedCustomerId: Number = -1;
 
   public products: Array<any> = [];
-  public selectedProductId: Number = -1;
+  public selectedProductId: any = -1;
   public addedProducts: Array<any> = [];
+  public selectedProduct: any = null;
 
   public salesStr: String = "";
   public addedProductsStr: String = "";
@@ -120,10 +121,10 @@ export class SalesComponent {
     this.salesStr = JSON.stringify(this.sales);
   }
   async onSelectedProductChange(e:any) {
-    this.selectedProductId=((e.target || {value:-1}).value || -1);
+    this.selectedProductId = e.target.value //((e.target || {value:-1}).value || -1);
   }
-  async onSelectedCustomerChange(e:any) {
-    this.selectedCustomerId=((e.target || {value:-1}).value || -1);
+  async onSelectedCustomerChange(e: any) {
+    this.selectedCustomerId = e.target.value //((e.target || {value:-1}).value || -1);
   }
 
   async loadCustomers() {

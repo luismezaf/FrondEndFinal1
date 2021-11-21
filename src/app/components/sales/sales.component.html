@@ -34,7 +34,7 @@
         <div>Seleccionar cliente</div>
         <select
           class="pa-md mt-md full-width"
-          (change)="onSelectedCustomerChange"
+          (change)="onSelectedCustomerChange($event)"
         >
           <option *ngFor="let customer of customers" [value]="customer.id">
             {{customer.nombreApellido}} | RUC {{customer.ruc}}
@@ -43,10 +43,10 @@
       </div>
       <!-- PRODUCT SELECTOR -->
       <div class="mt-md pt-md">
-        <div>Añadir productos</div>
+        <div>Añadir productos: {{selectedProduct ? selectedProduct.id : ''}}</div>
         <select
           class="pa-md mt-md full-width"
-          (change)="onSelectedProductChange"
+          (change)="onSelectedProductChange($event)"
         >
           <option
             *ngFor="let product of [{nombre: 'Seleccionar', id:-1}].concat(products)"
