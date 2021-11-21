@@ -10,7 +10,10 @@ export class ClientsComponent {
   constructor(
     private _clientsService: ClientsService,
   ) {}
-
+  public nombreApellido ="";
+  public ruc ="";
+  public email ="";
+   
   public clients: Array<any> = [];
   public showAddClientModal: Boolean = false;
   async loadClients(){
@@ -18,6 +21,18 @@ export class ClientsComponent {
   }
   async initialize() {
     await this.loadClients();
+  }
+
+  async createClient(){
+    const newClient = await this._clientsService.addClient({
+      id: 2,
+      nombreApellido: this.nombreApellido,
+      ruc: this.ruc,
+      email:this.email
+    });
+    // Update page
+    this.showAddClientModal = false;
+    this.initialize();
   }
   ngOnInit() {
     this.initialize();

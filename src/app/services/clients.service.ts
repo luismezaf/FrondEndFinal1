@@ -12,4 +12,8 @@ export class ClientsService {
   public async getClients(): Promise<any[]> {
     return await this._http.get<any>(this.urlApi).toPromise();
   }
+
+  public async addClient(request: any): Promise<any> {
+    return await this._http.post<any>(this.urlApi, request).toPromise();
+  }
 }

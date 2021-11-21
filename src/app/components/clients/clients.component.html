@@ -23,7 +23,15 @@
         <div class="bordered"></div>
         <!-- MODAL BODY -->
         <div class="pa-md ma-md text-grey">
+            <div>
+                <div>Nombre y Apellido</div>
+                <input matInput name="nombreApellido" placeholder="Nombre y Apellido" type="text" >
+                <div>Ruc</div>
+                <input matInput name="ruc" placeholder="Numero de RUC" type="text" >
+                <div>Email</div>
+                <input matInput name="email" placeholder="Email" type="email" >
 
+            </div>
         </div>
         <!-- MODAL FOOTER -->
         <div class="bordered"></div>
@@ -31,6 +39,7 @@
             <button class="text-grey" (click)="showAddClientModal=false">Cerrar</button>
             <button
                 class="text-white bg-primary pa-md rounded"
+                (click)="createClient()"
             >
                 <strong>Crear</strong>
             </button>
