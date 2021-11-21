@@ -53,6 +53,12 @@ export class SalesComponent {
         idProducto: product.id,
         cantidad: product.cantidad
       });
+      // Update product stock
+      const update = this.products.find((p) => `${p.id}` === `${product.id}`);
+      await this._productsService.editProduct({
+        ...update,
+        existencia: update.existencia - product.cantidad
+      });
     }
 
     // Update page
@@ -72,7 +78,7 @@ export class SalesComponent {
     if (isInList) {
       this.addedProducts = this.addedProducts.map((p) => {
         if (`${p.id}` === `${this.selectedProductId}`)
-          return { ...p, cantidad: p.cantidad + 1 };
+          return { ...p, cantidad: Math.min(p.cantidad + 1, p.existencia) };
         else return p;
       });
     } else this.addedProducts.push({ ...product, cantidad: 1 });
