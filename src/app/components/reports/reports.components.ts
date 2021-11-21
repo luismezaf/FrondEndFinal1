@@ -56,25 +56,46 @@ export class ReportsComponent {
           cliente = clientes;
         }
       });
-
-      if (fechaDesdeCadena <= venta.fecha && venta.fecha <= fechaHastaCadena) {
-        datos.push(
-          new Detalle(
-            cliente.nombreApellido,
-            `${venta.fecha.substr(0, 4)}-${venta.fecha.substr(
-              4,
-              2
-            )}-${venta.fecha.substr(6)}`,
-            producto.id + " - "+producto.nombre,
-            detalleVentas.cantidad,
-            venta.total
-          )
-        );
+      if (this.idProduct === 0){
+        console.log("entro en es 0");
+        if (fechaDesdeCadena <= venta.fecha && venta.fecha <= fechaHastaCadena) {
+          datos.push(
+            new Detalle(
+              cliente.nombreApellido,
+              `${venta.fecha.substr(0, 4)}-${venta.fecha.substr(
+                4,
+                2
+              )}-${venta.fecha.substr(6)}`,
+              producto.id + " - "+producto.nombre,
+              detalleVentas.cantidad,
+              venta.total
+            )
+          );
+        }        
+      }else{
+        //console.log("producto.id",producto.id );
+        //console.log(" this.idProduct", this.idProduct );
+        if (fechaDesdeCadena <= venta.fecha && venta.fecha <= fechaHastaCadena && Number(producto.id) === Number(this.idProduct)) {
+          datos.push(
+            new Detalle(
+              cliente.nombreApellido,
+              `${venta.fecha.substr(0, 4)}-${venta.fecha.substr(
+                4,
+                2
+              )}-${venta.fecha.substr(6)}`,
+              producto.id + " - "+producto.nombre,
+              detalleVentas.cantidad,
+              venta.total
+            )
+          );
+        }
       }
+
     });
     console.log(datos);
     this.datos = datos;
   }
+
   public async getdb() {
     this.services = await this._service.getbd();
     let datos: Detalle[] = [];
