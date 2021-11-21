@@ -7,15 +7,15 @@ import { ProductsService } from "src/app/services/products.service";
   styleUrls: ["./products.component.css"]
 })
 export class ProductsComponent {
-  constructor(
-    private _productsService: ProductsService,
-  ) {}
-
   public products: Array<any> = [];
   public showAddProductModal: Boolean = false;
   async loadProducts(){
     this.products = await this._productsService.getProducts();
   }
+  constructor(
+    private _productsService: ProductsService,
+  ) {}
+
   async initialize() {
     await this.loadProducts();
   }
