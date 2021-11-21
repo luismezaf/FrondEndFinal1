@@ -40,6 +40,7 @@
             <button class="text-grey" (click)="showAddProductModal=false">Cerrar</button>
             <button
                 class="text-white bg-primary pa-md rounded"
+                (click)= "addProduct()"
             >
                 <strong>Crear</strong>
             </button>
@@ -97,7 +98,8 @@
                 </div>
                 <div>
                     <button
-                    class="text-caption underline text-primary pa-none"
+                        class="text-caption underline text-primary pa-none"
+                        (click)="handleEditClick(product.id)"
                     >
                     Editar
                     </button>

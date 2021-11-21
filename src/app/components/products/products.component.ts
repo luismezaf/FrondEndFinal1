@@ -19,6 +19,10 @@ export class ProductsComponent {
     const newProduct = await this._productsService.addProduct(this.nuevoProd);
     console.log(newProduct);
     this.products.push(newProduct);
+    this.showAddProductModal = false;
+  }
+  handleEditClick(idProduct: Number){
+    console.log('Editing ' + idProduct);
   }
   constructor(
     private _productsService: ProductsService,
