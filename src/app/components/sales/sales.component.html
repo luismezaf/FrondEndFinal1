@@ -75,13 +75,19 @@
         <div>
           <div
             *ngFor="let addedProduct of addedProducts"
-            class="pa-md my-md column rounded bordered bg-grey"
+            class="pa-md my-md column rounded bordered"
           >
-            <div class="pb-sm">{{addedProduct.nombre}}</div>
+            <div class="row justify-between">
+              <div class="pb-sm">{{addedProduct.nombre}}</div>
+              <div class="pb-md text-caption bg-grey">
+                {{addedProduct.existencia}} en existencia
+              </div>
+            </div>
             <div class="row items-center">
               <div class="py-sm px-md rounded bordered">
                 {{addedProduct.cantidad}}
               </div>
+
               <div class="px-md">x</div>
               <div class="py-sm px-md rounded bordered">
                 {{addedProduct.precio}} Gs.
