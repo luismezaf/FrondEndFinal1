@@ -17,6 +17,7 @@ export class ProductsComponent {
   }
   async addProduct(){
     let newProduct: any = {};
+    this.showAddProductModal = false;
     if(this.nuevoProd.id){
       newProduct = await this._productsService.editProduct(this.nuevoProd);  
       this.products = this.products.map(
@@ -31,7 +32,10 @@ export class ProductsComponent {
       nombre: '', existencia: 0, precio: 0
     };
     console.log(newProduct);
-    this.showAddProductModal = false;
+  }
+  async deleteProduct(idProduct: Number){
+    await this._productsService.deleteProduct(idProduct);
+    this.products = this.products.filter( p => p.id !== idProduct);
   }
   handleEditClick(idProduct: Number){
     this.nuevoProd = this.products.find(p => p.id === idProduct);
