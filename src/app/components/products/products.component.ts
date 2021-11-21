@@ -16,13 +16,26 @@ export class ProductsComponent {
     this.products = await this._productsService.getProducts();
   }
   async addProduct(){
-    const newProduct = await this._productsService.addProduct(this.nuevoProd);
+    let newProduct: any = {};
+    if(this.nuevoProd.id){
+      newProduct = await this._productsService.editProduct(this.nuevoProd);  
+      this.products = this.products.map(
+        p => p.id === newProduct.id ? 
+          newProduct : p
+      );
+    }else{
+      newProduct = await this._productsService.addProduct(this.nuevoProd);
+      this.products.push(newProduct);
+    }
+    this.nuevoProd = {
+      nombre: '', existencia: 0, precio: 0
+    };
     console.log(newProduct);
-    this.products.push(newProduct);
     this.showAddProductModal = false;
   }
   handleEditClick(idProduct: Number){
-    console.log('Editing ' + idProduct);
+    this.nuevoProd = this.products.find(p => p.id === idProduct);
+    this.showAddProductModal = true;
   }
   constructor(
     private _productsService: ProductsService,
