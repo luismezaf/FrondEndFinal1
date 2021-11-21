@@ -19,14 +19,18 @@
   <div>
     <div *ngFor="let product of products" class="column pa-sm ma-sm rounded bordered">
         <div class="row items-center justify-between">
-            {{product.id}}
-        </div>
-        <div class="column pa-sm">
-            <div class="pb-sm text-grey">
-                <strong>{{product.nombre}}</strong>
+            <div
+                class="py-sm px-md bg-primary text-white rounded mr-md full-height"
+            >
+                {{product.id}}
             </div>
-            <div class="text-grey text-caption">
-                {{product.precio}} Gs.
+            <div class="column pa-sm">
+                <div class="pb-sm text-grey">
+                    <strong>{{product.nombre}}</strong>
+                </div>
+                <div class="text-grey text-caption">
+                    {{product.precio}} Gs.
+                </div>
             </div>
         </div>
         <div class="column pa-sm items-end">
