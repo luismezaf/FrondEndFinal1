@@ -4,6 +4,7 @@ import { ReportService } from "src/app/services/reports.service";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { getFechaForQuery } from "src/app/services";
+import { ProductsService } from "src/app/services/products.service";
 
 @Component({
   selector: "reports-root",
@@ -15,11 +16,16 @@ export class ReportsComponent {
   public fechaDesde: string;
   public fechaHasta: string;
   public idProduct: number;
+  public products: Array<any> = [];
 
   public datos: Detalle[] = [];
   public services: any = null;
-  //public _service: ReportService;
-  constructor(private _service: ReportService) {
+
+  async loadProducts(){
+    this.products = await this._productsService.getProducts();
+  }
+  constructor(private _service: ReportService, private _productsService: ProductsService) {
+
     this.getdb();
     this.idProduct = 0;
     const fecha:string = getFechaForQuery( new Date((new Date()).valueOf() - 1000*60*60*24));
@@ -56,7 +62,7 @@ export class ReportsComponent {
           cliente = clientes;
         }
       });
-      if (this.idProduct === 0){
+      if (Number(this.idProduct) === 0){
         console.log("entro en es 0");
         if (fechaDesdeCadena <= venta.fecha && venta.fecha <= fechaHastaCadena) {
           datos.push(
@@ -73,8 +79,8 @@ export class ReportsComponent {
           );
         }        
       }else{
-        //console.log("producto.id",producto.id );
-        //console.log(" this.idProduct", this.idProduct );
+        console.log("producto.id",producto.id );
+        console.log(" this.idProduct", this.idProduct );
         if (fechaDesdeCadena <= venta.fecha && venta.fecha <= fechaHastaCadena && Number(producto.id) === Number(this.idProduct)) {
           datos.push(
             new Detalle(
@@ -138,11 +144,13 @@ export class ReportsComponent {
     this.datos = datos;
   }
   public dataSource = null;
-
+  async initialize() {
+    await this.loadProducts();
+    
+  }
   ngOnInit() {
-    //this.dataSource = new MatTableDataSource(this.datos);
     this.getdb();
-    //this.downloadPDF();
+    this.initialize();
   }
 
   filtrar(event: Event) {

@@ -4,19 +4,21 @@ Fecha desde:
 <input ngDefaultControl type="date" [(ngModel)]="fechaDesde" /> Fecha hasta:
 <input ngDefaultControl type="date" [(ngModel)]="fechaHasta" />
 <br /><br />
+&nbsp;&nbsp;&nbsp;
 <button class="p-10 text-white br-4 bg-primary" (click)="filterDate()">
   Filtrar por fecha
 </button>
+&nbsp;&nbsp;&nbsp;
 <button class="p-10 text-white br-4 bg-primary" (click)="downloadPDF()">
   Download PDF
 </button>
-ID producto:
-<input
-  ngDefaultControl
-  title="Ingrese el id del paciente"
-  type="text"
-  [(ngModel)]="idProduct"
-/>
+&nbsp;&nbsp;&nbsp;
+<select [(ngModel)]="idProduct">
+  <option [value]=0> Selecciona producto</option>
+  <option *ngFor="let product of products" [value]="product.id">
+       {{product.nombre}} id: {{product.id}} 
+  </option>
+</select><br/><br/>
 
 <br /><br />
 

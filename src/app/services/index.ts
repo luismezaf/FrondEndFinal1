@@ -7,3 +7,4 @@ export const mainEndpoint =
     const fechaQuery:string = fecha.getFullYear() + month + date;
     return fechaQuery;
 }
+
