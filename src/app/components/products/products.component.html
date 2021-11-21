@@ -12,7 +12,7 @@
       max-height: 90%;
     }
 </style>
-<div
+<!-- <div
     *ngIf="showAddProductModal"
     class="bg-dark-full row justify-center items-center"
 >
@@ -21,11 +21,11 @@
             <strong>Nuevo producto</strong>
         </div>
         <div class="bordered"></div>
-        <!-- MODAL BODY -->
+        MODAL BODY
         <div class="pa-md ma-md text-grey">
 
         </div>
-        <!-- MODAL FOOTER -->
+        MODAL FOOTER
         <div class="bordered"></div>
         <div class="pa-md ma-md text-grey row justify-between">
             <button class="text-grey" (click)="showAddProductModal=false">Cerrar</button>
@@ -36,8 +36,9 @@
             </button>
         </div>
     </div>
-</div>
-    <!-- HEADER -->
+</div> -->
+
+<!-- HEADER -->
 <div class="column">
     <!-- SUMMARY -->
     <div class="row justify-between pa-sm mb-md items-center mx-sm">
@@ -53,13 +54,13 @@
     </div>
 </div>
   
-  <div class="column mx-md px-xs mb-sm text-caption">
+<div class="column mx-md px-xs mb-sm text-caption">
     <strong>
-      {{products.length}} {{products.length === 1 ? 'producto' : 'productos'}}
+        {{products.length}} {{products.length === 1 ? 'producto' : 'productos'}}
     </strong>
-  </div>
+</div>
   <!-- LIST -->
-    <div>
+<div>
     <div *ngFor="let product of products" class="column pa-sm ma-sm rounded bordered">
         <div class="row items-center justify-between">
             <div class="row items-center">
