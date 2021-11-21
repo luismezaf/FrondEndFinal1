@@ -19,6 +19,6 @@ export class ProductsService {
     return await this._http.put<any>(`${this.urlApi}/${request.id}`, request).toPromise();
   }
   public async deleteProduct( idProduct: Number): Promise<any[]> {
-    return await this._http.get<any>(this.urlApi + `/${idProduct}`).toPromise();
+    return await this._http.delete<any>(this.urlApi + `/${idProduct}`).toPromise();
   }
 }
