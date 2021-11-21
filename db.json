@@ -1,0 +1,14 @@
+{
+    "productos": [
+        { "id": 1, "nombre": "producto1", "existencia": 10, "precio": 1000 }
+    ],
+    "clientes": [
+        { "id": 1, "ruc": "123456-7", "nombreApellido": "Gerardo Cabrera", "email": "ger@cab.com" }
+    ],
+    "ventas": [
+        { "id": 1, "idCliente": 1, "fecha": "20211118", "total": 1000 }
+    ],
+    "detalleVentas": [
+        { "id": 1, "idVenta": 1, "idProducto": 1, "cantidad":1 }
+    ]
+}
