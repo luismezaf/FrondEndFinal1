@@ -11,12 +11,14 @@ import { MatTableModule } from "@angular/material/table";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatInputModule } from "@angular/material/input";
 import { ProductsComponent } from "./components/products/products.component";
+import { ClientsComponent } from "./components/clients/clients.component";
 import { SalesComponent } from "./components/sales/sales.component";
 import { TitledInputComponent } from "./components/titled-input/titled-input.component";
 
 import { CustomerService } from "./services/customers.service";
 import { ProductsService } from "./services/products.service";
 import { SalesService } from "./services/sales.service";
+import { ClientsService } from "./services/clients.service";
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { SalesService } from "./services/sales.service";
     ReportsComponent,
     ProductsComponent,
     SalesComponent,
+    ClientsComponent,
     TitledInputComponent
   ],
   imports: [
@@ -35,7 +38,7 @@ import { SalesService } from "./services/sales.service";
     HttpClientModule,
     FormsModule
   ],
-  providers: [SalesService, ProductsService, CustomerService],
+  providers: [SalesService, ProductsService, CustomerService, ClientsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
