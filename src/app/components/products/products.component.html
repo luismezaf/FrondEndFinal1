@@ -19,34 +19,36 @@
   <div>
     <div *ngFor="let product of products" class="column pa-sm ma-sm rounded bordered">
         <div class="row items-center justify-between">
-            <div
-                class="py-sm px-md bg-primary text-white rounded mr-md full-height"
-            >
-                {{product.id}}
-            </div>
-            <div class="column pa-sm">
-                <div class="pb-sm text-grey">
-                    <strong>{{product.nombre}}</strong>
-                </div>
-                <div class="text-grey text-caption">
-                    {{product.precio}} Gs.
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="text-caption text-grey">Unidades restantes</div>
-            <div class="text-caption text-grey">{{product.existencia}}</div>
-        </div>
-        <div class="column pa-sm items-end">
-            <div class="text-caption mr-sm">
-                {{product.nombre}}
-            </div>
-            <div>
-                <button
-                  class="text-caption underline text-primary pa-none"
+            <div class="row items-center">
+                <div
+                    class="py-sm px-md bg-primary text-white rounded mr-md full-height"
                 >
-                  Editar
-                </button>
+                    {{product.id}}
+                </div>
+                <div class="column pa-sm">
+                    <div class="pb-sm text-grey">
+                        <strong>{{product.nombre}}</strong>
+                    </div>
+                    <div class="text-grey text-caption">
+                        {{product.precio}} Gs.
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="text-caption text-grey">Unidades restantes</div>
+                <div class="text-caption text-grey">{{product.existencia}}</div>
+            </div>
+            <div class="column pa-sm items-end">
+                <div class="text-caption mr-sm">
+                    {{product.nombre}}
+                </div>
+                <div>
+                    <button
+                    class="text-caption underline text-primary pa-none"
+                    >
+                    Editar
+                    </button>
+                </div>
             </div>
         </div>
     </div>
