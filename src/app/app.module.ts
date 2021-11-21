@@ -1,5 +1,8 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
 import { AppComponent } from "./app.component";
 import { ReportsComponent } from "./components/reports/reports.component";
@@ -8,17 +11,31 @@ import { MatTableModule } from "@angular/material/table";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatInputModule } from "@angular/material/input";
 import { ProductsComponent } from "./components/products/products.component";
+import { SalesComponent } from "./components/sales/sales.component";
+import { TitledInputComponent } from "./components/titled-input/titled-input.component";
 
-// import { ProductosService } from "./services/productos.service";
+import { CustomerService } from "./services/customers.service";
+import { ProductsService } from "./services/products.service";
+import { SalesService } from "./services/sales.service";
+
 @NgModule({
-  declarations: [AppComponent, ReportsComponent, ProductsComponent],
+  declarations: [
+    AppComponent,
+    ReportsComponent,
+    ProductsComponent,
+    SalesComponent,
+    TitledInputComponent
+  ],
   imports: [
     BrowserModule,
     MatInputModule,
+    CommonModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [SalesService, ProductsService, CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

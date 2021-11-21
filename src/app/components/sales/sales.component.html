@@ -1,0 +1,209 @@
+<style>
+  .bg-dark-full {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000c;
+  }
+  .modal-container {
+    width: 70%;
+    max-height: 90%;
+  }
+</style>
+
+<!-- 
+  ADD NEW SALE MODAL 
+-->
+
+<div
+  *ngIf="showAddSaleModal"
+  class="bg-dark-full row justify-center items-center"
+>
+  <div class="bg-white rounded modal-container elevated">
+    <!-- MODAL HEADER -->
+    <div class="text-title pa-md ma-md text-grey">
+      <strong>Nueva venta</strong>
+    </div>
+    <div class="bordered"></div>
+    <!-- MODAL BODY -->
+    <div class="pa-md ma-md text-grey">
+      <!-- CUSTOMER SELECTOR -->
+      <div>
+        <div>Seleccionar cliente</div>
+        <select
+          class="pa-md mt-md full-width"
+          (change)="selectedCustomerId=$event.target.value"
+        >
+          <option *ngFor="let customer of customers" [value]="customer.id">
+            {{customer.nombreApellido}} | RUC {{customer.ruc}}
+          </option>
+        </select>
+      </div>
+      <!-- PRODUCT SELECTOR -->
+      <div class="mt-md pt-md">
+        <div>Añadir productos</div>
+        <select
+          class="pa-md mt-md full-width"
+          (change)="selectedProductId=$event.target.value"
+        >
+          <option
+            *ngFor="let product of [{nombre: 'Seleccionar', id:-1}].concat(products)"
+            [value]="product.id"
+          >
+            {{product.nombre}}
+          </option>
+        </select>
+        <!-- ADD PRODUCT BTN -->
+        <div *ngIf="selectedProductId >= 0" class="row justify-end">
+          <button
+            *ngIf="selectedProductHasAdded()"
+            class="my-md pa-md rounded bordered mr-md"
+            (click)="removeSelectedProduct()"
+          >
+            Remover
+          </button>
+          <button
+            class="my-md pa-md bg-primary rounded text-white"
+            (click)="addSelectedProduct()"
+          >
+            <strong>Añadir</strong>
+          </button>
+        </div>
+        <!-- LIST OF SELECTED PRODUCTS -->
+        <div>
+          <div
+            *ngFor="let addedProduct of addedProducts"
+            class="pa-md my-md column rounded bordered bg-grey"
+          >
+            <div class="pb-sm">{{addedProduct.nombre}}</div>
+            <div class="row items-center">
+              <div class="py-sm px-md rounded bordered">
+                {{addedProduct.cantidad}}
+              </div>
+              <div class="px-md">x</div>
+              <div class="py-sm px-md rounded bordered">
+                {{addedProduct.precio}} Gs.
+              </div>
+              <div class="px-md">=</div>
+              <div class="py-sm px-md rounded bg-primary text-white">
+                {{addedProduct.precio * addedProduct.cantidad}} Gs.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL FOOTER -->
+    <div class="bordered"></div>
+    <div class="pa-md ma-md text-grey row justify-between">
+      <button class="text-grey" (click)="showAddSaleModal=false">Cerrar</button>
+      <button
+        *ngIf="addedProducts.length > 0"
+        class="text-white bg-primary pa-md rounded"
+        (click)="addSale()"
+      >
+        <strong>Crear</strong>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 
+  HEADER 
+-->
+
+<div class="column">
+  <!-- SUMMARY -->
+  <div class="row justify-between pa-sm mb-md items-center mx-sm">
+    <div class="text-body row items-center">
+      <strong>
+        {{sales.length}} {{sales.length === 1 ? 'venta' : 'ventas'}}
+      </strong>
+    </div>
+    <button
+      class="mx-sm bordered rounded pa-md bg-primary text-white"
+      (click)="showAddSaleModal=true"
+    >
+      <strong>NUEVA VENTA</strong>
+    </button>
+    <div class="column items-end">
+      <div class="text-caption px-sm text-primary">TOTAL</div>
+      <div><strong>{{total}} Gs.</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+  LIST 
+-->
+
+<div>
+  <div *ngFor="let sale of sales" class="column pa-sm ma-sm rounded bordered">
+    <!-- 
+      ITEM INFO 
+    -->
+    <div class="row items-center justify-between">
+      <!-- TOTAL AND CUSTOMER -->
+      <div class="row items-center">
+        <div
+          class="py-sm px-md bg-primary text-white rounded mr-md full-height"
+        >
+          {{sale.id}}
+        </div>
+        <div class="column pa-sm">
+          <div class="pb-sm text-grey">
+            <strong>{{sale.total}} Gs.</strong>
+          </div>
+          <div class="text-grey text-caption">
+            {{sale.customer.nombreApellido}}
+          </div>
+        </div>
+      </div>
+      <!-- DATE -->
+      <div class="column">
+        <div class="text-caption text-grey">Vendido el</div>
+        <div class="text-caption text-grey">{{sale.fecha}}</div>
+      </div>
+      <!-- SHOW DETAILS -->
+      <div class="column pa-sm items-end">
+        <div class="text-caption mr-sm">
+          {{sale.products.length}} {{sale.products.length === 1 ? 'producto' :
+          'productos'}}
+        </div>
+        <div>
+          <button
+            class="text-caption underline text-primary pa-none"
+            (click)="selectedSale=sale"
+          >
+            Ver más detalles
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 
+      ITEM DETAILS
+    -->
+    <div *ngIf="selectedSale && sale.id === selectedSale.id">
+      <div class="bordered"></div>
+      <div class="pa-sm">
+        <div
+          *ngFor="let product of sale.products"
+          class="pa-md row justify-between text-grey"
+        >
+          <div><strong>{{product.nombre}}</strong></div>
+          <div class="row text-caption items-center">
+            <div class="bordered pa-sm rounded">{{product.cantidad}}</div>
+            <div class="px-md">x</div>
+            <div class="bordered pa-sm rounded">{{product.precio}} Gs.</div>
+            <div class="px-md">=</div>
+            <div class="pa-sm bg-primary text-white rounded">
+              {{product.cantidad * product.precio}} Gs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

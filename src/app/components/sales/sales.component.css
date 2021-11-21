@@ -1,0 +1,214 @@
+.flex,
+.row,
+.column {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-end {
+  justify-content: end;
+}
+.items-center {
+  align-items: center;
+}
+.items-end {
+  align-items: end;
+}
+button {
+  background-color: transparent;
+  border: none;
+  padding: none !important;
+  margin: none;
+}
+/* PADDING NONE */
+.pa-none {
+  padding: none !important;
+}
+/* PADDING XS */
+.pr-xs,
+.px-xs,
+.pa-xs {
+  padding-right: 2px;
+}
+.pl-xs,
+.px-xs,
+.pa-xs {
+  padding-left: 2px;
+}
+.pt-xs,
+.py-xs,
+.pa-xs {
+  padding-top: 2px;
+}
+.pb-xs,
+.py-xs,
+.pa-xs {
+  padding-bottom: 2px;
+}
+/* PADDING SM */
+.pr-sm,
+.px-sm,
+.pa-sm {
+  padding-right: 4px;
+}
+.pl-sm,
+.px-sm,
+.pa-sm {
+  padding-left: 4px;
+}
+.pt-sm,
+.py-sm,
+.pa-sm {
+  padding-top: 4px;
+}
+.pb-sm,
+.py-sm,
+.pa-sm {
+  padding-bottom: 4px;
+}
+/* PADDING MD */
+.pr-md,
+.px-md,
+.pa-md {
+  padding-right: 8px;
+}
+.pl-md,
+.px-md,
+.pa-md {
+  padding-left: 8px;
+}
+.pt-md,
+.py-md,
+.pa-md {
+  padding-top: 8px;
+}
+.pb-md,
+.py-md,
+.pa-md {
+  padding-bottom: 8px;
+}
+/* MARGIN NONE */
+.ma-none {
+  margin: none;
+}
+/* MARGIN XS */
+.mr-xs,
+.mx-xs,
+.ma-xs {
+  margin-right: 2px;
+}
+.ml-xs,
+.mx-xs,
+.ma-xs {
+  margin-left: 2px;
+}
+.mt-xs,
+.my-xs,
+.ma-xs {
+  margin-top: 2px;
+}
+.mb-xs,
+.my-xs,
+.ma-xs {
+  margin-bottom: 2px;
+}
+/* MARGIN SM */
+.mr-sm,
+.mx-sm,
+.ma-sm {
+  margin-right: 4px;
+}
+.ml-sm,
+.mx-sm,
+.ma-sm {
+  margin-left: 4px;
+}
+.mt-sm,
+.my-sm,
+.ma-sm {
+  margin-top: 4px;
+}
+.mb-sm,
+.my-sm,
+.ma-sm {
+  margin-bottom: 4px;
+}
+/* MARGIN MD */
+.mr-md,
+.mx-md,
+.ma-md {
+  margin-right: 8px;
+}
+.ml-md,
+.mx-md,
+.ma-md {
+  margin-left: 8px;
+}
+.mt-md,
+.my-md,
+.ma-md {
+  margin-top: 8px;
+}
+.mb-md,
+.my-md,
+.ma-md {
+  margin-bottom: 8px;
+}
+.bordered {
+  border: 1px solid #ddd;
+}
+.rounded {
+  border-radius: 4px;
+}
+.round {
+  border-radius: 400px;
+}
+.elevated {
+  box-shadow: 0 0 5px 5px #0001;
+}
+.bg-primary {
+  background-color: orange;
+}
+.bg-grey {
+  background-color: #fdfdfd;
+}
+.text-white {
+  color: white;
+}
+.text-grey {
+  color: grey;
+}
+.full-width {
+  width: 100%;
+}
+.full-height {
+  height: 100%;
+}
+.text-caption {
+  font-size: 12px;
+}
+.text-title {
+  font-size: 20px;
+}
+.text-primary {
+  color: orange;
+}
+.text-body {
+  font-size: 16px;
+}
+.bg-white {
+  background-color: white;
+}
+.underline {
+  text-decoration: underline;
+}
