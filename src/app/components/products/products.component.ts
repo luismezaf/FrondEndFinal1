@@ -12,7 +12,7 @@ export class ProductsComponent {
   ) {}
 
   public products: Array<any> = [];
-  
+  public showAddProductModal: Boolean = false;
   async loadProducts(){
     this.products = await this._productsService.getProducts();
   }

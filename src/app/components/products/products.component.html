@@ -11,12 +11,55 @@
       width: 70%;
       max-height: 90%;
     }
-  </style>
+</style>
+<div
+    *ngIf="showAddProductModal"
+    class="bg-dark-full row justify-center items-center"
+>
+    <div class="bg-white rounded modal-container elevated">
+        <div class="text-title pa-md ma-md text-grey">
+            <strong>Nuevo producto</strong>
+        </div>
+        <div class="bordered"></div>
+        <!-- MODAL BODY -->
+        <div class="pa-md ma-md text-grey">
+
+        </div>
+        <!-- MODAL FOOTER -->
+        <div class="bordered"></div>
+        <div class="pa-md ma-md text-grey row justify-between">
+            <button class="text-grey" (click)="showAddProductModal=false">Cerrar</button>
+            <button
+                class="text-white bg-primary pa-md rounded"
+            >
+                <strong>Crear</strong>
+            </button>
+        </div>
+    </div>
+</div>
+    <!-- HEADER -->
+<div class="column">
+    <!-- SUMMARY -->
+    <div class="row justify-between pa-sm mb-md items-center mx-sm">
+        <div class="text-body column">
+            <div class="text-caption text-primary">Productos</div>
+        </div>
+        <button
+            class="mx-sm rounded pa-md bg-primary text-white elevated"
+            (click)="showAddProductModal=true"
+        >
+            <strong>Nuevo producto</strong>
+        </button>
+    </div>
+</div>
   
-  <!-- 
-    MODAL 
-  -->
-  <div>
+  <div class="column mx-md px-xs mb-sm text-caption">
+    <strong>
+      {{products.length}} {{products.length === 1 ? 'producto' : 'productos'}}
+    </strong>
+  </div>
+  <!-- LIST -->
+    <div>
     <div *ngFor="let product of products" class="column pa-sm ma-sm rounded bordered">
         <div class="row items-center justify-between">
             <div class="row items-center">
