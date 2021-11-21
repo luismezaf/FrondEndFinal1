@@ -1,1 +1,45 @@
-<h1>Productos!</h1>
+<style>
+    .bg-dark-full {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #000c;
+    }
+    .modal-container {
+      width: 70%;
+      max-height: 90%;
+    }
+  </style>
+  
+  <!-- 
+    MODAL 
+  -->
+  <div>
+    <div *ngFor="let product of products" class="column pa-sm ma-sm rounded bordered">
+        <div class="row items-center justify-between">
+            {{product.id}}
+        </div>
+        <div class="column pa-sm">
+            <div class="pb-sm text-grey">
+                <strong>{{product.nombre}}</strong>
+            </div>
+            <div class="text-grey text-caption">
+                {{product.precio}} Gs.
+            </div>
+        </div>
+        <div class="column pa-sm items-end">
+            <div class="text-caption mr-sm">
+                {{product.existencia}} unidades restantes
+            </div>
+            <div>
+                <button
+                  class="text-caption underline text-primary pa-none"
+                >
+                  Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
