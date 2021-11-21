@@ -13,7 +13,7 @@ export class SalesComponent {
   public sales: Array<any> = [];
   public total: Number = 0;
   public search: String = "";
-  public selectedSale: Object = null;
+  public selectedSale: any = null;
 
   public customers: Array<any> = [];
   public selectedCustomerId: Number = -1;
@@ -118,6 +118,12 @@ export class SalesComponent {
     this.sales = await this._salesService.getSales();
     this.total = this.sales.reduce((total, s) => total + s.total, 0);
     this.salesStr = JSON.stringify(this.sales);
+  }
+  async onSelectedProductChange(e:any) {
+    this.selectedProductId=((e.target || {value:-1}).value || -1);
+  }
+  async onSelectedCustomerChange(e:any) {
+    this.selectedCustomerId=((e.target || {value:-1}).value || -1);
   }
 
   async loadCustomers() {

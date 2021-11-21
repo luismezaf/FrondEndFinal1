@@ -23,10 +23,10 @@ export class SalesService {
     const products = await this._productsService.getProducts();
     const customers = await this._customerService.getCustomers();
 
-    const getSaleProducts = (s) => {
+    const getSaleProducts = (s: { id: any; }) => {
       return details
-        .filter((d) => d.idVenta === s.id)
-        .map((d) => {
+        .filter((d: { idVenta: any; }) => d.idVenta === s.id)
+        .map((d: { cantidad: any; idProducto: any; }) => {
           return {
             cantidad: d.cantidad,
             ...products.find((p) => p.id === d.idProducto)
@@ -34,10 +34,10 @@ export class SalesService {
         });
     };
 
-    return sales.map((s) => {
+    return sales.map((s:any) => {
       const saleProducts = getSaleProducts(s);
       const total = saleProducts.reduce(
-        (total, p) => total + p.precio * p.cantidad,
+        (total:any, p:any) => total + p.precio * p.cantidad,
         0
       );
       return {

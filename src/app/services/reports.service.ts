@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { mainEndpoint } from "./utils";
+import { mainEndpoint } from "src/app/services";
 @Injectable({
   providedIn: "root"
 })
@@ -12,8 +12,8 @@ export class ReportService {
   constructor(private _http: HttpClient) {}
 
   public async getbd(): Promise<any[]> {
-    const response = await this._http.get<any>(this.urlApi + "db/").toPromise();
-    //console.log(response);
+    const response = await this._http.get<any>(this.urlApi + "/db/").toPromise();
+    console.log(response);
     return response;
   }
   public async getServiceFromTo(

@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { ReportService } from "../services/reports.service";
+import { ReportService } from "src/app/services/reports.service";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { getFechaForQuery } from "../services/index";
+import { getFechaForQuery } from "src/app/services";
 
 @Component({
   selector: "reports-root",
