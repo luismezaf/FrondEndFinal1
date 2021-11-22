@@ -25,12 +25,15 @@
         <div class="pa-md ma-md text-grey">
             <div>
                 <div>Nombre y Apellido</div>
-                <input matInput name="nombreApellido" placeholder="Nombre y Apellido" type="text" >
-                <div>Ruc</div>
-                <input matInput name="ruc" placeholder="Numero de RUC" type="text" >
+                <input class="pa-md mt-md full-width-input" [(ngModel)]="nuevoCliente.nombreApellido">    
+            </div>
+            <div class="mt-md pt-md">
                 <div>Email</div>
-                <input matInput name="email" placeholder="Email" type="email" >
-
+                <input class="pa-md mt-md full-width-input" [(ngModel)]="nuevoCliente.email">    
+            </div>
+            <div class="mt-md pt-md">
+                <div>RUC</div>
+                <input class="pa-md mt-md full-width-input" [(ngModel)]="nuevoCliente.ruc">    
             </div>
         </div>
         <!-- MODAL FOOTER -->
@@ -97,8 +100,15 @@
                 <div>
                     <button
                     class="text-caption underline text-primary pa-none"
+                    (click)="handleEditClick(client.id)"
                     >
-                    Editar
+                        Editar
+                    </button>
+                    <button
+                        class="text-caption underline text-primary pa-none"
+                        (click)="deleteClient(client.id)"
+                    >
+                        Borrar
                     </button>
                 </div>
             </div>
